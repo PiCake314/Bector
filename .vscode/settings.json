@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "*.tpp": "cpp",
+        "__tuple": "cpp",
+        "array": "cpp",
+        "ios": "cpp",
+        "__bit_reference": "cpp",
+        "functional": "cpp",
+        "__config": "cpp"
+    }
+}
