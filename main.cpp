@@ -12,25 +12,36 @@ int main(){
     b.push_back("!");
 
 
-    std::string cat = b.fold<std::string>("")([](std::string acc, std::string elt){ return acc + elt + " "; });
-    std::cout << "Value: " << cat << std::endl;
+    for(const auto &elt : b){
+        std::cout << elt;
+        if(elt != b.back()) std::cout << ", ";
+    }
+    std::cout << '\n';
+
+
+
+
+
+
+    // std::string cat = b.fold<std::string>("")([](std::string acc, std::string elt){ return acc + elt + " "; });
+    // std::cout << "Cat: " << cat << std::endl;
 
     
-    int length = b.fold(0)(
-        [](int acc, std::string elt){
-            return acc + elt.length();
-        }
-    );
-    std::cout << "Length: " << length << std::endl;
+    // int length = b.fold(0)(
+    //     [](int acc, std::string elt){
+    //         return acc + elt.length();
+    //     }
+    // );
+    // std::cout << "Length: " << length << std::endl;
 
 
-    std::string word = b.fold<std::string>("")(
-        [](std::string acc, std::string elt){
-            if(elt.length() >= acc.length())return elt;
-            else return acc; 
-        }
-    );
-    std::cout << "Longest Word: " << word << std::endl;
+    // std::string word = b.fold<std::string>("")(
+    //     [](std::string acc, std::string elt){
+    //         if(elt.length() >= acc.length())return elt;
+    //         else return acc; 
+    //     }
+    // );
+    // std::cout << "Longest Word: " << word << std::endl;
 
 
 }

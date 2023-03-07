@@ -26,6 +26,7 @@ Bector<V>::Bector(){
 }
 
 
+
 template <typename V>
 Bector<V>::~Bector(){
     delete[] array;
@@ -71,26 +72,6 @@ V Bector<V>::get(int index){
 
 
 template <typename V>
-V& Bector<V>::at(int index){
-    if(index >= size){
-        throw "Err: Segfault!";
-    }
-
-    return array[index];
-}
-
-
-template <typename V>
-V& Bector<V>::operator[](int index){
-    if(index >= size){
-        throw "Err: Segfault!";
-    }
-
-    return array[index];
-}
-
-
-template <typename V>
 void Bector<V>::push_back(V value){
     if(size == capacity-1) resize();
     array[size++] = value;
@@ -104,3 +85,57 @@ void Bector<V>::pop_back(){
     size--;
 }
 
+
+template <typename V>
+V Bector<V>::head(){
+    return array[0];
+}
+
+
+template <typename V>
+Bector<V> Bector<V>::tail(){
+    Bector<V> b;
+    for(int i = 1; i < size; i++){
+        b.push_back(array[i]);
+    }
+    return b;
+}
+
+
+template <typename V>
+V Bector<V>::back(){
+    return array[size-1];
+}
+
+
+template <typename V>
+V *Bector<V>::begin(){
+    return array;
+}
+
+
+template <typename V>
+V *Bector<V>::end(){
+    return array + size;
+}
+
+
+template <typename V>
+V &Bector<V>::at(int index){
+    if(index >= size){
+        throw "Err: Segfault!";
+    }
+
+    return array[index];
+}
+
+
+
+template <typename V>
+V &Bector<V>::operator[](int index){
+    if(index >= size){
+        throw "Err: Segfault!";
+    }
+
+    return array[index];
+}
