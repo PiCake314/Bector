@@ -17,31 +17,30 @@ void Bector<V>::resize(){
 
 
 template <typename V>
-Bector<V>::Bector(){
-    size = 0;
-    capacity = 1;
-    array = new V[capacity];
+Bector<V>::Bector()
+: size(0), capacity(1), array(new V[capacity])
+{
+    // size = 0;
+    // capacity = 1;
+    // array = new V[capacity];
 }
 
 
+// template <typename V, typename... Rest>
+// Bector<V>::Bector(V value, Rest... args){
+//     size = 0;
+//     capacity = 1;
+//     array = new V[capacity];
 
+//     push_args(*this, value, args...);
 
-template <typename V>
-Bector<V>::Bector(V value, ...){
-    size = 0;
-    capacity = 1;
-    array = new V[capacity];
+//     // while(value != NULL){
+//     //     push_back(value);
+//     //     value = va_arg(args, V);
+//     // }
 
-    va_list args;
-    va_start(args, value);
-
-    while(value){
-        push_back(value);
-        value = va_arg(args, V);
-    }
-
-    va_end(args);
-}
+//     // va_end(args);
+// }
 
 
 template <typename V>
@@ -59,7 +58,7 @@ Bector<V>::Bector(V arr[], int n){
 
 template <typename V>
 Bector<V>::~Bector(){
-    delete[] array;
+    // delete[] array;
 }
 
 
@@ -77,7 +76,7 @@ int Bector<V>::getCapacity(){
 
 template <typename V>
 void Bector<V>::set(int index, V value){
-    if(index >= size) throw "Err: Segfault!";
+    if(index >= size) throw std::runtime_error("Err: Segfault!");
 
     array[index] = value;
 }
@@ -85,7 +84,7 @@ void Bector<V>::set(int index, V value){
 
 template <typename V>
 V Bector<V>::get(int index) const{
-    if(index >= size) throw "Err: Segfault!";
+    if(index >= size) throw std::runtime_error("Err: Segfault!");
 
     return array[index];
 }
@@ -113,11 +112,7 @@ V Bector<V>::head() const{
 
 template <typename V>
 Bector<V> Bector<V>::tail() const{
-    Bector<V> b;
-    for(int i = 1; i < size; i++){
-        b.push_back(array[i]);
-    }
-    return b;
+    return Bector<V>(array+1, size-1);
 }
 
 
